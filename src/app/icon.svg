@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ZeroParadox icon">
+  <defs>
+    <linearGradient id="zpBlue" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="35%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="zpSilver" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#020b1a"/>
+  <path d="M18 16h30l-22 16H18v-16zm0 32h30L26 32h22v16H18z" fill="url(#zpSilver)" opacity="0.95"/>
+  <path d="M18 16L46 16L26 32L46 48L18 48L36 32L18 16Z" fill="url(#zpBlue)" opacity="0.9"/>
+  <path d="M39 12l5 5-5 5-5-5 5-5zm0 25l5 5-5 5-5-5 5-5z" fill="#f8fafc" opacity="0.9"/>
+  <circle cx="39" cy="32" r="2.5" fill="#e0f2fe"/>
+</svg>

@@ -1,0 +1,495 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@property --ai-orbit-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@layer base {
+  :root {
+    --background: #f5f8fc;
+    --foreground: #020617;
+    --card: #ffffff;
+    --card-foreground: #020617;
+    --primary: #2563eb;
+    --primary-foreground: #ffffff;
+    --muted: #edf3f9;
+    --muted-foreground: #64748b;
+    --border: #e2e8f0;
+  }
+
+  .dark {
+    --background: #070b14;
+    --foreground: #f8fafc;
+    --card: #0b0f19;
+    --card-foreground: #f8fafc;
+    --primary: #3b82f6;
+    --primary-foreground: #ffffff;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --border: #1e293b;
+  }
+}
+
+body {
+  min-width: 320px;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(circle at 8% -5%, rgba(37, 99, 235, 0.11), transparent 28rem),
+    radial-gradient(circle at 95% 12%, rgba(14, 165, 233, 0.08), transparent 24rem);
+  color: var(--foreground);
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1;
+  overflow-x: hidden;
+}
+
+html.dark body {
+  background-image:
+    radial-gradient(circle at 8% -5%, rgba(37, 99, 235, 0.13), transparent 28rem),
+    radial-gradient(circle at 95% 12%, rgba(14, 116, 144, 0.1), transparent 24rem);
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.2);
+  color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(14, 165, 233, 0.55);
+  outline-offset: 3px;
+}
+
+.ai-orbit-hero {
+  contain: layout paint;
+  perspective: 1200px;
+  perspective-origin: 50% 46%;
+}
+
+.ai-orbit-globe {
+  position: absolute;
+  inset: 3%;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  --ai-orbit-angle: 0deg;
+  animation: none;
+}
+
+.ai-orbit-globe.ai-orbit-static {
+  animation: none;
+}
+
+.ai-orbit-rings,
+.ai-orbit-nodes,
+.ai-orbit-lines,
+.ai-orbit-particles {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.ai-orbit-ring {
+  position: absolute;
+  inset: 6%;
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
+  border-radius: 50%;
+  box-shadow:
+    0 0 20px rgba(56, 189, 248, 0.18),
+    inset 0 0 20px rgba(59, 130, 246, 0.15);
+  backface-visibility: visible;
+  transform-style: preserve-3d;
+}
+
+html:not(.dark) .ai-orbit-ring {
+  border: 1.5px solid rgba(37, 99, 235, 0.4);
+  box-shadow:
+    0 0 18px rgba(37, 99, 235, 0.12),
+    inset 0 0 18px rgba(37, 99, 235, 0.1);
+}
+
+.ai-orbit-lines {
+  overflow: visible;
+  opacity: 1;
+  transform: translateZ(-4px);
+  filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.75));
+}
+
+html:not(.dark) .ai-orbit-lines {
+  filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.5));
+}
+
+.ai-orbit-line {
+  stroke: rgba(56, 189, 248, 0.85);
+  stroke-width: 0.45;
+  stroke-dasharray: 1.8 2.2;
+}
+
+html:not(.dark) .ai-orbit-line {
+  stroke: rgba(37, 99, 235, 0.85);
+}
+
+.ai-orbit-line-a {
+  animation: ai-orbit-line-pulse 3s ease-in-out infinite;
+}
+
+.ai-orbit-line-b {
+  animation: ai-orbit-line-pulse 3.4s ease-in-out -1.1s infinite;
+}
+
+.ai-orbit-core {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  width: 114px;
+  height: 114px;
+  transform: translate(-50%, -50%) translateZ(35px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border: 1.5px solid rgba(56, 189, 248, 0.75);
+  border-radius: 24px;
+  background: rgba(11, 22, 48, 0.95);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.7),
+    0 0 24px rgba(56, 189, 248, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  color: white;
+  backdrop-filter: blur(16px);
+  transform-style: preserve-3d;
+  isolation: isolate;
+}
+
+.ai-orbit-core::before {
+  position: absolute;
+  z-index: -1;
+  inset: 7px -7px -9px 7px;
+  border: inherit;
+  border-radius: inherit;
+  background: rgba(15, 23, 42, 0.32);
+  content: "";
+  filter: blur(7px);
+  transform: translateZ(-18px);
+}
+
+.ai-orbit-core::after {
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.24), transparent 38%);
+  content: "";
+  pointer-events: none;
+}
+
+html:not(.dark) .ai-orbit-core {
+  background: #ffffff;
+  border-color: rgba(37, 99, 235, 0.65);
+  box-shadow:
+    0 8px 28px rgba(15, 23, 42, 0.15),
+    0 0 20px rgba(37, 99, 235, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  color: #0f172a;
+}
+
+html:not(.dark) .ai-orbit-core::before {
+  background: rgba(37, 99, 235, 0.2);
+}
+
+.ai-orbit-core-orientation {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) translateZ(35px) rotateY(calc(-1 * var(--ai-orbit-angle)));
+  transform-style: preserve-3d;
+}
+
+.ai-orbit-node-content {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transform-style: preserve-3d;
+}
+
+.ai-orbit-core-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 2px;
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  border-radius: 10px;
+  color: #38bdf8;
+  background: rgba(14, 165, 233, 0.22);
+}
+
+html:not(.dark) .ai-orbit-core-icon {
+  border-color: rgba(37, 99, 235, 0.5);
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.14);
+}
+
+.ai-orbit-core-title {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+html:not(.dark) .ai-orbit-core-title {
+  color: #0f172a;
+  text-shadow: none;
+}
+
+.ai-orbit-core-subtitle {
+  color: #38bdf8;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+html:not(.dark) .ai-orbit-core-subtitle {
+  color: #2563eb;
+}
+
+.ai-orbit-node {
+  position: absolute;
+  display: inline-flex;
+  min-width: 84px;
+  transform: translate(-50%, -50%) translateZ(var(--node-depth)) rotateY(calc(-1 * var(--ai-orbit-angle))) rotateX(-7deg);
+  transform-style: preserve-3d;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px solid rgba(56, 189, 248, 0.75);
+  border-radius: 999px;
+  background: rgba(13, 27, 54, 0.95);
+  padding: 8px 12px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.8),
+    0 0 16px rgba(56, 189, 248, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  isolation: isolate;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease,
+    background-color 180ms ease;
+}
+
+.ai-orbit-node::before {
+  position: absolute;
+  z-index: -1;
+  inset: 2px -5px -7px 5px;
+  border: inherit;
+  border-radius: inherit;
+  background: rgba(15, 23, 42, 0.3);
+  content: "";
+  filter: blur(4px);
+  transform: translateZ(-10px);
+}
+
+html:not(.dark) .ai-orbit-node {
+  border: 1.5px solid rgba(37, 99, 235, 0.6);
+  background: #ffffff;
+  color: #020617;
+  font-weight: 800;
+  box-shadow:
+    0 6px 20px rgba(15, 23, 42, 0.15),
+    0 0 14px rgba(37, 99, 235, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+html:not(.dark) .ai-orbit-node::before {
+  background: rgba(37, 99, 235, 0.17);
+}
+
+.ai-orbit-node:hover,
+.ai-orbit-node:focus-visible,
+.ai-orbit-node-active {
+  border-color: rgba(56, 189, 248, 1);
+  outline: none;
+  background: rgba(18, 38, 76, 0.98);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.9),
+    0 0 24px rgba(56, 189, 248, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  filter: brightness(1.2);
+}
+
+html:not(.dark) .ai-orbit-node:hover,
+html:not(.dark) .ai-orbit-node:focus-visible,
+html:not(.dark) .ai-orbit-node-active {
+  border-color: rgba(37, 99, 235, 0.9);
+  background: #ffffff;
+  box-shadow:
+    0 8px 22px rgba(15, 23, 42, 0.2),
+    0 0 20px rgba(37, 99, 235, 0.35);
+}
+
+.ai-orbit-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: 8px;
+  background: rgba(7, 16, 38, 0.96);
+  padding: 5px 9px;
+  color: #f8fafc;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+html:not(.dark) .ai-orbit-tooltip {
+  border-color: rgba(37, 99, 235, 0.35);
+  background: rgba(255, 255, 255, 0.98);
+  color: #0f172a;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+}
+
+.ai-orbit-particles span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #67e8f9;
+  box-shadow: 0 0 10px 2px rgba(103, 232, 249, 0.7);
+  animation: ai-orbit-particle 6s linear var(--particle-delay) infinite;
+}
+
+@keyframes ai-orbit-spin {
+  from {
+    --ai-orbit-angle: 0deg;
+    transform: rotateY(var(--ai-orbit-angle)) rotateX(7deg);
+  }
+
+  to {
+    --ai-orbit-angle: 360deg;
+    transform: rotateY(var(--ai-orbit-angle)) rotateX(7deg);
+  }
+}
+
+@keyframes ai-orbit-line-pulse {
+
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes ai-orbit-particle {
+  from {
+    transform: rotate(0deg) translateX(44%) rotate(0deg);
+    opacity: 0;
+  }
+
+  15%,
+  80% {
+    opacity: 0.85;
+  }
+
+  to {
+    transform: rotate(360deg) translateX(44%) rotate(-360deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .ai-orbit-node:nth-child(n + 7) {
+    display: none;
+  }
+
+  .ai-orbit-core {
+    width: 94px;
+    height: 94px;
+    border-radius: 20px;
+  }
+
+  .ai-orbit-core-title {
+    font-size: 9px;
+  }
+
+  .ai-orbit-core-subtitle {
+    font-size: 7px;
+  }
+
+  .ai-orbit-node {
+    min-width: 68px;
+    padding: 6px 8px;
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ai-orbit-globe,
+  .ai-orbit-line-a,
+  .ai-orbit-line-b,
+  .ai-orbit-particles span {
+    animation: none !important;
+  }
+}
+
+/* Custom CSS abstract tech background pattern */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+html:not(.dark) .bg-tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+/* Accessibility reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
