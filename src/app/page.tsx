@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Code2, ShieldCheck, Zap } from "lucide-react";
+import {
+  ArrowRight,
+  BarChart3,
+  CheckCircle2,
+  Code2,
+  Layers,
+  ShieldCheck,
+  Sparkles,
+  Zap,
+} from "lucide-react";
 import { PageTransition } from "@/components/page-transition";
 import { HeroBackground } from "@/components/hero-background";
 import { AIOrbitHero } from "@/components/ai-orbit-hero";
@@ -12,7 +21,6 @@ import {
 import { CoverflowCarousel } from "@/components/coverflow-carousel";
 import { ProjectCard } from "@/components/project-card";
 import { CTABanner } from "@/components/cta-banner";
-import { SuccessSaaSPopup } from "@/components/success-saas-popup";
 import { SERVICES } from "@/data/services";
 import { PROJECTS } from "@/data/projects";
 import { DOMAIN, SITE_NAME, TAGLINE, SUPPORTING_TEXT } from "@/lib/constants";
@@ -53,7 +61,6 @@ export default function HomePage() {
 
   return (
     <PageTransition>
-      <SuccessSaaSPopup />
       <div className="relative overflow-hidden">
         {/* HERO SECTION */}
         <section className="relative pt-12 sm:pt-20 pb-20 sm:pb-28">
@@ -189,6 +196,119 @@ export default function HomePage() {
                   playsInline
                   aria-label="ZeroParadox brand introduction video"
                 />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SUCCESSFUL SAAS SHOWCASE */}
+        <section className="py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="relative overflow-hidden rounded-4xl border border-blue-200/80 bg-linear-to-br from-blue-50 via-white to-cyan-50 p-5 shadow-[0_30px_80px_rgba(15,23,42,0.1)] dark:border-blue-900/60 dark:from-blue-950/40 dark:via-neutral-950 dark:to-cyan-950/30 sm:p-8 lg:p-10">
+              <div className="pointer-events-none absolute -right-24 -top-28 h-72 w-72 rounded-full bg-blue-500/15 blur-3xl" />
+              <div className="relative grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
+                <div className="space-y-5">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-600/25">
+                      <Layers className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-neutral-950 dark:text-white">
+                        ZERO-PARADOX SaaS
+                      </p>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                        Built for real business operations
+                      </p>
+                    </div>
+                    <span className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[10px] font-bold text-emerald-700 dark:border-emerald-900/70 dark:bg-emerald-950/50 dark:text-emerald-300">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                      Live
+                    </span>
+                  </div>
+
+                  <div>
+                    <p className="mb-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.18em] text-blue-600 dark:text-blue-400">
+                      <Sparkles className="h-3.5 w-3.5" />
+                      ZERO-PARADOX PRODUCTS
+                    </p>
+                    <h2 className="text-3xl font-black tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
+                      Our Successful SaaS in Market
+                    </h2>
+                    <p className="mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-base">
+                      Explore CortexAI, our AI-powered SaaS platform for managing
+                      operations, data, and growth with more clarity.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className="rounded-xl border border-white/80 bg-white/80 p-3 dark:border-white/10 dark:bg-white/5">
+                      <BarChart3 className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                      <p className="mt-1 text-lg font-black text-neutral-950 dark:text-white">
+                        10x
+                      </p>
+                      <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
+                        Clarity
+                      </p>
+                    </div>
+                    <div className="rounded-xl border border-white/80 bg-white/80 p-3 dark:border-white/10 dark:bg-white/5">
+                      <Sparkles className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
+                      <p className="mt-1 text-lg font-black text-neutral-950 dark:text-white">
+                        AI
+                      </p>
+                      <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
+                        Powered
+                      </p>
+                    </div>
+                    <div className="rounded-xl border border-white/80 bg-white/80 p-3 dark:border-white/10 dark:bg-white/5">
+                      <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                      <p className="mt-1 text-lg font-black text-neutral-950 dark:text-white">
+                        Ready
+                      </p>
+                      <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
+                        To scale
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-2 text-xs text-neutral-700 dark:text-neutral-200 sm:grid-cols-3">
+                    {[
+                      "AI-powered workflows",
+                      "Built for real operations",
+                      "Ready to scale",
+                    ].map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-start gap-1.5 rounded-lg border border-neutral-200/80 bg-white/70 p-2 dark:border-neutral-800 dark:bg-neutral-900/70"
+                      >
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <a
+                    href="https://myfrontend-bice.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition-colors hover:bg-blue-700"
+                  >
+                    View Our SaaS Product
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                </div>
+
+                <div className="overflow-hidden rounded-3xl border border-blue-100 bg-neutral-950 shadow-2xl dark:border-blue-900/60">
+                  <video
+                    className="aspect-video w-full object-cover"
+                    src="/SocialSync_Edited.mp4"
+                    controls
+                    autoPlay
+                    muted
+                    playsInline
+                    preload="metadata"
+                    aria-label="CortexAI product video"
+                  />
+                </div>
               </div>
             </div>
           </div>

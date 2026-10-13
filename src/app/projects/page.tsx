@@ -7,7 +7,6 @@ import { AIOrbitHero } from "@/components/ai-orbit-hero";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ProjectCard } from "@/components/project-card";
 import { CTABanner } from "@/components/cta-banner";
-import { SuccessSaaSPopup } from "@/components/success-saas-popup";
 import { PROJECTS } from "@/data/projects";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -25,7 +24,6 @@ export default function ProjectsPage() {
 
   return (
     <PageTransition>
-      <SuccessSaaSPopup />
       <div className="relative overflow-hidden">
         {/* HERO */}
         <section className="relative pt-12 sm:pt-20 pb-16">

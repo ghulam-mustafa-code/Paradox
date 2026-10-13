@@ -34,7 +34,7 @@ export function SuccessSaaSPopup() {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="saas-popup-title"
-                className="relative max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto rounded-3xl border border-blue-200/80 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.25)] dark:border-neutral-700 dark:bg-neutral-950"
+                className="relative max-h-[calc(100vh-2rem)] w-full max-w-4xl overflow-y-auto rounded-3xl border border-blue-200/80 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.25)] dark:border-neutral-700 dark:bg-neutral-950"
             >
                 <div className="absolute -right-24 -top-28 h-72 w-72 rounded-full bg-blue-500/15 blur-3xl" />
                 <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-blue-600 via-cyan-400 to-indigo-600" />
