@@ -12,6 +12,19 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    id: "cortexai",
+    title: "CortexAI",
+    category: "SaaS",
+    shortDescription:
+      "Live AI-powered SaaS platform that brings business operations, data, and growth intelligence into one clear workspace.",
+    description:
+      "A production-ready SaaS product built for real business operations, combining AI-powered workflows, operational clarity, and scalable dashboards.",
+    technologies: ["Next.js", "TypeScript", "AI", "SaaS"],
+    image: "/images/projects/business-analytics.jpg",
+    imageAlt: "CortexAI business intelligence dashboard",
+    demoUrl: "https://myfrontend-bice.vercel.app/",
+  },
+  {
     id: "ai-crop-doctor",
     title: "AI Crop Doctor",
     category: "AI",

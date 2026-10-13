@@ -117,6 +117,22 @@ export function ProductCard({ product }: { product: Product }) {
               {product.tagline}
             </p>
 
+            {product.id === "cortexai" && (
+              <div className="space-y-2">
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
+                  CortexAI Product Video
+                </h4>
+                <video
+                  className="aspect-video w-full rounded-xl border border-neutral-200 bg-neutral-950 object-cover dark:border-neutral-800"
+                  src="/SocialSync_Edited.mp4"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  aria-label="CortexAI product video"
+                />
+              </div>
+            )}
+
             <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
               {product.shortDescription}
             </p>

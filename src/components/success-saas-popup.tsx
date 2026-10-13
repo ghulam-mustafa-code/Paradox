@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
     ArrowRight,
     ArrowUpRight,
@@ -14,11 +14,7 @@ import {
 const SAAS_PRODUCT_URL = "https://myfrontend-bice.vercel.app/";
 
 export function SuccessSaaSPopup() {
-    const [isOpen, setIsOpen] = useState(false);
-
-    useEffect(() => {
-        setIsOpen(true);
-    }, []);
+    const [isOpen, setIsOpen] = useState(true);
 
     const closePopup = () => {
         setIsOpen(false);
@@ -38,7 +34,7 @@ export function SuccessSaaSPopup() {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="saas-popup-title"
-                className="relative w-full max-w-md overflow-hidden rounded-3xl border border-blue-200/80 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.25)] dark:border-neutral-700 dark:bg-neutral-950"
+                className="relative max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto rounded-3xl border border-blue-200/80 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.25)] dark:border-neutral-700 dark:bg-neutral-950"
             >
                 <div className="absolute -right-24 -top-28 h-72 w-72 rounded-full bg-blue-500/15 blur-3xl" />
                 <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-blue-600 via-cyan-400 to-indigo-600" />
@@ -118,6 +114,20 @@ export function SuccessSaaSPopup() {
                         Explore the AI-powered SaaS products we build to help businesses
                         manage operations, data, and growth with more clarity.
                     </p>
+
+                    <div className="mt-4 overflow-hidden rounded-2xl border border-blue-100 bg-neutral-950 shadow-lg dark:border-blue-900/60">
+                        <video
+                            className="aspect-video w-full object-cover"
+                            src="/SocialSync_Edited.mp4"
+                            autoPlay
+                            controls
+                            loop
+                            muted
+                            playsInline
+                            preload="metadata"
+                            aria-label="CortexAI product video"
+                        />
+                    </div>
 
                     <div className="mt-4 grid gap-1.5 text-xs text-neutral-700 dark:text-neutral-200 sm:grid-cols-3">
                         {[

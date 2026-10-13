@@ -13,6 +13,24 @@ export interface Product {
 
 export const PRODUCTS: Product[] = [
   {
+    id: "cortexai",
+    name: "CortexAI",
+    category: "AI / SaaS",
+    tagline: "Clarity for Real Business Operations",
+    shortDescription:
+      "A live AI-powered SaaS platform for managing operations, data, and growth with more clarity.",
+    image: "/images/projects/business-analytics.jpg",
+    iconName: "BarChart3",
+    tags: ["AI", "SaaS", "Operations"],
+    status: "Live",
+    features: [
+      "AI-powered business workflows",
+      "Operational metrics and reporting",
+      "Scalable workspace for growing teams",
+      "Live production-ready SaaS experience",
+    ],
+  },
+  {
     id: "kirana-ai",
     name: "KiranaAI",
     category: "AI / Retail",
